@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
       if (data != null && data.statewise.length > 0) {
         totalCases = data.statewise[0];
         data.statewise.remove(data.statewise[0]);
-        print("data is set");
         setState(() {
           totalCases;
           stateData.addAll(data.statewise);
@@ -62,7 +61,6 @@ class _HomePageState extends State<HomePage> {
     stateData.sort(c);
     setState(() {
       isConfirmSort = !isConfirmSort;
-      stateData;
     });
   }
 
@@ -77,7 +75,6 @@ class _HomePageState extends State<HomePage> {
     stateData.sort(c);
     setState(() {
       isActiveSort = !isActiveSort;
-      stateData;
     });
   }
 
@@ -92,7 +89,6 @@ class _HomePageState extends State<HomePage> {
     stateData.sort(c);
     setState(() {
       isRecoverSort = !isRecoverSort;
-      stateData;
     });
   }
 
@@ -131,9 +127,11 @@ class _HomePageState extends State<HomePage> {
       color: AppColors.cardBackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
+        constraints: BoxConstraints(maxWidth:339.4, maxHeight:285.6),
         height: height / 2.65,
         padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
         child: Column(
+          
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             ListHeaderView(this._sortByConfirm, this._sortByActive,
@@ -167,7 +165,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //print("state data is $totalCases & all list is ${stateData.length}");
     return Scaffold(
       body: SafeArea(
         child: Container(

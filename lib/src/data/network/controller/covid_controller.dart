@@ -42,7 +42,6 @@ class CovidController extends BaseController {
       Response response = await Dio().get(CovidURL.getData);
       if (response.statusCode == 200) {
         final res = DataCallback.fromJson(response.data);
-        print("res--2> ${res.toJson()}");
         return res;
       }
     } catch (e) {
@@ -80,7 +79,6 @@ class CovidController extends BaseController {
             });
           }
         }
-        print("statesData ---> $statesData");
         return statesData;
       }
     } catch (e) {

@@ -12,68 +12,77 @@ class ListHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: <Widget>[
-        Expanded(
-          flex: 2,
-          child: Text("State/UT",
-              style: TextStyle(fontFamily: AppStyles.FONT_BOLD)),
-        ),
-        Expanded(
-          child: InkWell(
-            onTap: () => this.sortByConfirm(),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Text("C",
-                    style: TextStyle(
-                        fontFamily: AppStyles.FONT_BOLD, color: Colors.red)),
+        ListTile(title: Text('Click on each STATE for details',textAlign: TextAlign.center,)),
+        Row(
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Text("State/UT",
+                  style: TextStyle(fontFamily: AppStyles.FONT_BOLD)),
+            ),
+            Expanded(
+              child: InkWell(
+                onTap: () => this.sortByConfirm(),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: Text("C",
+                        style: TextStyle(
+                            fontFamily: AppStyles.FONT_BOLD,
+                            color: Colors.red)),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          child: InkWell(
-            onTap: () => this.sortByActive(),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Text("A",
-                    style: TextStyle(
-                        fontFamily: AppStyles.FONT_BOLD, color: Colors.blue)),
+            Expanded(
+              child: InkWell(
+                onTap: () => this.sortByActive(),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: Text("A",
+                        style: TextStyle(
+                            fontFamily: AppStyles.FONT_BOLD,
+                            color: Colors.blue)),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          child: InkWell(
-            onTap: () => this.sortByRecover(),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Text("R",
-                    style: TextStyle(
-                        fontFamily: AppStyles.FONT_BOLD, color: Colors.green)),
+            Expanded(
+              child: InkWell(
+                onTap: () => this.sortByRecover(),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: Text("R",
+                        style: TextStyle(
+                            fontFamily: AppStyles.FONT_BOLD,
+                            color: Colors.green)),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          child: InkWell(
-            onTap: () => this.sortByDeath(),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Text("D",
-                    style: TextStyle(
-                        fontFamily: AppStyles.FONT_BOLD, color: Colors.grey)),
+            Expanded(
+              child: InkWell(
+                onTap: () => this.sortByDeath(),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: Text("D",
+                        style: TextStyle(
+                            fontFamily: AppStyles.FONT_BOLD,
+                            color: Colors.grey)),
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ],
     );

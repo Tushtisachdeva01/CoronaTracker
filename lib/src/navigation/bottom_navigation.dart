@@ -1,7 +1,7 @@
 import 'package:covidtracker/res/app_colors.dart';
 import 'package:covidtracker/src/pages/about_page.dart';
-import 'package:covidtracker/src/pages/chart_page.dart';
 import 'package:covidtracker/src/pages/home_page.dart';
+import 'package:covidtracker/src/pages/info_page.dart';
 import 'package:covidtracker/src/pages/news_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
       case 0:
         return HomePage();
       case 1:
-        return ChartPage();
+        return InfoPage();
       case 2:
         return NewsPage();
       case 3:
@@ -62,9 +62,9 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
           child: BottomNavigationBar(
             items: <BottomNavigationBarItem>[
               _getNavigationItem(Icons.dashboard),
-              _getNavigationItem(Icons.show_chart),
-              _getNavigationItem(Icons.library_books),
-              _getNavigationItem(Icons.settings)
+              _getNavigationItem(Icons.question_answer),
+              _getNavigationItem(Icons.new_releases),
+              _getNavigationItem(Icons.local_hospital)
             ],
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,

@@ -6,7 +6,6 @@ import 'package:covidtracker/src/utils/intent_utils.dart';
 import 'package:covidtracker/src/utils/num_utils.dart';
 import 'package:covidtracker/src/widgets/EmptyView.dart';
 import 'package:covidtracker/src/widgets/TotalCasesCard.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class StatePage extends StatefulWidget {
@@ -174,6 +173,7 @@ class _StatePageState extends State<StatePage> {
                   shrinkWrap: true,
                   children: <Widget>[
                     TotalCasesCard(totalCases),
+                    
                     SizedBox(height: 36),
                     getDistrictsCard(),
                     SizedBox(height: 36)

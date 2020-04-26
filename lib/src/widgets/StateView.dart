@@ -11,6 +11,7 @@ class StateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.red,
       onTap: () => onPress(stateData),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10),

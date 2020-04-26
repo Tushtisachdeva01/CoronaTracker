@@ -52,41 +52,44 @@ class TotalCasesCard extends StatelessWidget {
         CalendarUtils.parse(totalCases.lastupdatedtime, 'dd/MM/yyyy hh:mm:ss');
     var lastUpdated = timeago.format(dateTime);
 
-    return Card(
-      elevation: 3,
-      color: AppColors.cardBackground,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text("CURRENT CASES IN INDIA", style: TextStyle(fontSize: 14)),
-            SizedBox(height: 6),
-            Text("Last updated $lastUpdated", style: TextStyle(fontSize: 10)),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                infoBox(
-                    NumberUtils.format(totalCases.confirmed),
-                    NumberUtils.format(totalCases.deltaconfirmed),
-                    Colors.red,
-                    "Confirmed"),
-                infoBox(NumberUtils.format(totalCases.active), "0", Colors.blue,
-                    "Active     "),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                infoBox(NumberUtils.format(totalCases.recovered),
-                    totalCases.deltarecovered, Colors.green, "Recovered"),
-                infoBox(NumberUtils.format(totalCases.deaths),
-                    totalCases.deltadeaths, Colors.grey, "Deceased"),
-              ],
-            )
-          ],
+    return SingleChildScrollView(
+          child: Card(
+        elevation: 3,
+        color: AppColors.cardBackground,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Text("CURRENT CASES IN INDIA", style: TextStyle(fontSize: 14)),
+              SizedBox(height: 6),
+              Text("Last updated $lastUpdated", style: TextStyle(fontSize: 10)),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  infoBox(
+                      NumberUtils.format(totalCases.confirmed),
+                      NumberUtils.format(totalCases.deltaconfirmed),
+                      Colors.red,
+                      "Confirmed"),
+                  infoBox(NumberUtils.format(totalCases.active), "0", Colors.blue,
+                      "Active     "),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  infoBox(NumberUtils.format(totalCases.recovered),
+                      totalCases.deltarecovered, Colors.green, "Recovered"),
+                  infoBox(NumberUtils.format(totalCases.deaths),
+                      totalCases.deltadeaths, Colors.grey, "Deceased"),
+                ],
+              ),
+            ],
+          ),
+
         ),
       ),
     );
