@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class NewsPage extends StatefulWidget {
@@ -8,6 +10,8 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
+  List<Map<String, Object>> article;
+  List<Map<String, Object>> title;
   Widget getHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -18,6 +22,15 @@ class _NewsPageState extends State<NewsPage> {
         ),
       ],
     );
+  }
+
+  Future<void> trying() async {
+    var response = await http.get(
+        'http://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=c452d9f6399d49aa98a0c4e88e4448be');
+    // print(response.body);
+    var result = json.decode(response.body);
+      article = result['articles'];
+      // title=article.where(test)
   }
 
   @override
@@ -31,53 +44,15 @@ class _NewsPageState extends State<NewsPage> {
               children: <Widget>[
                 getHeader(),
                 SizedBox(height: 36),
-                ListTile(
-                  leading: Text('1.'),
-                  title: Text('Wash your hands frequently'),
-                ),
-                ListTile(
-                  leading: Text('2.'),
-                  title: Text('Maintain social distancing'),
-                ),
-                ListTile(
-                  leading: Text('3.'),
-                  title: Text('Stay home as much as possible'),
-                ),
-                ListTile(
-                  leading: Text('4.'),
-                  title: Text('If you have fever, cough and difficulty breathing, seek medical care early'),
-                ),
-                ListTile(
-                  leading: Text('5.'),
-                  title: Text('Consider wearing a mask in public'),
-                ),
-                ListTile(
-                  leading: Text('6.'),
-                  title: Text('Clean and disinfect household surfaces'),
-                ),
-                ListTile(
-                  leading: Text('7.'),
-                  title: Text('Cover your coughs and sneezes'),
-                ),
-                ListTile(
-                  leading: Text('8.'),
-                  title: Text('Drink water every 15 minutes'),
-                ),
-                ListTile(
-                  leading: Text('9.'),
-                  title: Text('Avoid touching eyes, nose and mouth'),
-                ),
-                ListTile(
-                  leading: Text('10.'),
-                  title: Text('Avoid contact with wild or farm animals'),
-                ),
-                ListTile(
-                  leading: Text('11.'),
-                  title: Text('Thoroughly cook meat and eggs'),
-                ),
-                ListTile(
-                  leading: Text('12.'),
-                  title: Text('Eat balanced nutrition'),
+                FutureBuilder(
+                  future: trying(),
+                  builder: (ctx, snapShot) =>
+                      snapShot.connectionState == ConnectionState.waiting
+                          ? Center(child: CircularProgressIndicator())
+                          : ListView.builder(
+                            itemBuilder: (_,i)=>ListTile(title: Text('abc'),),
+                            itemCount: article.length,
+                          )
                 ),
               ],
             ),

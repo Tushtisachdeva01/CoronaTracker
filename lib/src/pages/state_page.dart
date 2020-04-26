@@ -64,7 +64,7 @@ class _StatePageState extends State<StatePage> {
       color: AppColors.cardBackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
-        height: height / 2.65,
+        height: height / 2.85,
         padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -173,7 +173,6 @@ class _StatePageState extends State<StatePage> {
                   shrinkWrap: true,
                   children: <Widget>[
                     TotalCasesCard(totalCases),
-                    
                     SizedBox(height: 36),
                     getDistrictsCard(),
                     SizedBox(height: 36)

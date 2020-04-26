@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
         totalCases = data.statewise[0];
         data.statewise.remove(data.statewise[0]);
         setState(() {
-          totalCases;
           stateData.addAll(data.statewise);
         });
       }
@@ -103,7 +102,6 @@ class _HomePageState extends State<HomePage> {
     stateData.sort(c);
     setState(() {
       isDeathSort = !isDeathSort;
-      stateData;
     });
   }
 
@@ -115,7 +113,7 @@ class _HomePageState extends State<HomePage> {
           "Covid-19",
           style: TextStyle(fontSize: 24, fontFamily: AppStyles.FONT_BOLD),
         ),
-        Icon(Icons.album, color: Colors.white, size: 40),
+        Icon(Icons.warning, color: Colors.white, size: 40),
       ],
     );
   }
@@ -127,11 +125,10 @@ class _HomePageState extends State<HomePage> {
       color: AppColors.cardBackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
-        constraints: BoxConstraints(maxWidth:339.4, maxHeight:285.6),
+        constraints: BoxConstraints(maxWidth: 339.4, maxHeight: 285.6),
         height: height / 2.65,
         padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
         child: Column(
-          
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             ListHeaderView(this._sortByConfirm, this._sortByActive,
@@ -177,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                 TotalCasesCard(totalCases)
               else
                 CircularProgressIndicator(),
-              SizedBox(height: 36),
+              SizedBox(height: 26),
               getStateCard()
             ],
           ),
