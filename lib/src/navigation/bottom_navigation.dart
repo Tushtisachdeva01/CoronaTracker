@@ -1,8 +1,8 @@
 import 'package:covidtracker/res/app_colors.dart';
 import 'package:covidtracker/src/pages/about_page.dart';
-import 'package:covidtracker/src/pages/home_page.dart';
 import 'package:covidtracker/src/pages/info_page.dart';
 import 'package:covidtracker/src/pages/news_page.dart';
+import 'package:covidtracker/src/widgets/cases.dart';
 import 'package:flutter/material.dart';
 
 class MyBottomNavigation extends StatefulWidget {
@@ -20,7 +20,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   Widget getWidget(int position) {
     switch (position) {
       case 0:
-        return HomePage();
+        return Cases();
       case 1:
         return InfoPage();
       case 2:

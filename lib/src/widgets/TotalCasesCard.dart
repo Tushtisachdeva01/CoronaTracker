@@ -53,7 +53,7 @@ class TotalCasesCard extends StatelessWidget {
     var lastUpdated = timeago.format(dateTime);
 
     return SingleChildScrollView(
-          child: Card(
+      child: Card(
         elevation: 3,
         color: AppColors.cardBackground,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -74,8 +74,8 @@ class TotalCasesCard extends StatelessWidget {
                       NumberUtils.format(totalCases.deltaconfirmed),
                       Colors.red,
                       "Confirmed"),
-                  infoBox(NumberUtils.format(totalCases.active), "0", Colors.blue,
-                      "Active     "),
+                  infoBox(NumberUtils.format(totalCases.active), "0",
+                      Colors.blue, "Active     "),
                 ],
               ),
               Row(
@@ -89,7 +89,6 @@ class TotalCasesCard extends StatelessWidget {
               ),
             ],
           ),
-
         ),
       ),
     );
