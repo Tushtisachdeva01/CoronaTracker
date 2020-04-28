@@ -12,7 +12,6 @@ class NewsPage extends StatefulWidget {
 
 class _NewsPageState extends State<NewsPage> {
   List<dynamic> article = [];
-  List<dynamic> coronaarticle = [];
   bool title;
   Widget getHeader() {
     return Row(
@@ -30,13 +29,9 @@ class _NewsPageState extends State<NewsPage> {
     try {
       var response = await http.get(
           'http://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=c452d9f6399d49aa98a0c4e88e4448be');
-      // print(response);
       var result = json.decode(response.body);
-      // print(result);
       article = result['articles'];
-      // coronaarticle = article.contains('corona');
     } catch (error) {
-      print('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
       print(error);
     }
   }
@@ -64,65 +59,70 @@ class _NewsPageState extends State<NewsPage> {
                 SizedBox(height: 36),
                 FutureBuilder(
                   future: trying(),
-                  builder: (ctx, snapShot) =>
-                      snapShot.connectionState == ConnectionState.waiting
-                          ? Center(child: CircularProgressIndicator())
-                          : Expanded(
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemBuilder: (_, i) => InkWell(
-                                  onTap: () =>
-                                      _launch(article[i]['url'].toString()),
-                                  splashColor: Colors.red,
-                                  child: ListTile(
-                                    leading: CircleAvatar(
-                                      child: Text(
-                                        (i + 1).toString(),
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor: Colors.grey[700],
+                  builder: (ctx, snapShot) => snapShot.connectionState ==
+                          ConnectionState.waiting
+                      ? Center(child: CircularProgressIndicator())
+                      : Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemBuilder: (_, i) => InkWell(
+                              onTap: () =>
+                                  _launch(article[i]['url'].toString()),
+                              splashColor: Colors.red,
+                              child: Card(
+                                elevation: 6,
+                                color: Color(0xff242535),
+                                child: ListTile(
+                                  contentPadding: EdgeInsets.all(8),
+                                  leading: CircleAvatar(
+                                    child: Text(
+                                      (i + 1).toString(),
+                                      style: TextStyle(color: Colors.white),
                                     ),
-                                    title: Text(
-                                      // (article[i]['title'].contains('corona') ||
-                                      //             article[i]['title']
-                                      //                 .contains('covid') ||
-                                      //             article[i]['title']
-                                      //                 .contains('lockdown') ||
-                                      //             article[i]['title']
-                                      //                 .contains('lockdown') ||
-                                      //         article[i]['title']
-                                      //             .contains('Corona') ||
-                                      //         article[i]['title']
-                                      //             .contains('CORONA') ||
-                                      //         article[i]['title']
-                                      //             .contains('symptoms') ||
-                                      //         article[i]['title']
-                                      //             .contains('vaccine') ||
-                                      //             article[i]['title']
-                                      //             .contains('Vaccine') ||
-                                      //         article[i]['title']
-                                      //             .contains('pandemic') ||
-                                      //             article[i]['title']
-                                      //             .contains('Covid') ||
-                                      //         article[i]['title'].contains('Cov')) ?
-                                      article[i]['title'],
-                                      // : '',
-                                      textScaleFactor: 1.5,
-                                    ),
-                                    subtitle: article[i]['description'] != null
-                                        ? Text(
-                                            article[i]['description'],
-                                            textScaleFactor: 1.1,
-                                          )
-                                        : Text(
-                                            'No Descrption',
-                                            textScaleFactor: 1.1,
-                                          ),
+                                    backgroundColor: Colors.grey[700],
                                   ),
+                                  title: Text(
+                                    // (article[i]['title'].contains('corona') ||
+                                    //             article[i]['title']
+                                    //                 .contains('covid') ||
+                                    //             article[i]['title']
+                                    //                 .contains('lockdown') ||
+                                    //             article[i]['title']
+                                    //                 .contains('lockdown') ||
+                                    //         article[i]['title']
+                                    //             .contains('Corona') ||
+                                    //         article[i]['title']
+                                    //             .contains('CORONA') ||
+                                    //         article[i]['title']
+                                    //             .contains('symptoms') ||
+                                    //         article[i]['title']
+                                    //             .contains('vaccine') ||
+                                    //             article[i]['title']
+                                    //             .contains('Vaccine') ||
+                                    //         article[i]['title']
+                                    //             .contains('pandemic') ||
+                                    //             article[i]['title']
+                                    //             .contains('Covid') ||
+                                    //         article[i]['title'].contains('Cov')) ?
+                                    article[i]['title'],
+                                    // : '',
+                                    textScaleFactor: 1.47,
+                                  ),
+                                  subtitle: article[i]['description'] != null
+                                      ? Text(
+                                          article[i]['description'],
+                                          textScaleFactor: 1.1,
+                                        )
+                                      : Text(
+                                          'No Descrption',
+                                          textScaleFactor: 1.1,
+                                        ),
                                 ),
-                                itemCount: article.length,
                               ),
                             ),
+                            itemCount: article.length,
+                          ),
+                        ),
                 ),
               ],
             ),

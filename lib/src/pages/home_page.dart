@@ -1,192 +1,157 @@
-// import 'package:covidtracker/res/app_colors.dart';
-// import 'package:covidtracker/res/app_styles.dart';
-// import 'package:covidtracker/src/data/network/controller/covid_controller.dart';
-// import 'package:covidtracker/src/data/network/entity/data_callback.dart';
-// import 'package:covidtracker/src/pages/state_page.dart';
-// import 'package:covidtracker/src/utils/intent_utils.dart';
-// import 'package:covidtracker/src/widgets/EmptyView.dart';
-// import 'package:covidtracker/src/widgets/ListHeaderView.dart';
-// import 'package:covidtracker/src/widgets/StateView.dart';
-// import 'package:covidtracker/src/widgets/TotalCasesCard.dart';
-// import 'package:flutter/material.dart';
+import 'package:covidtracker/src/pages/statewisedata.dart';
+import 'package:covidtracker/src/widgets/appDrawer.dart';
+import 'package:covidtracker/src/widgets/cases.dart';
+import 'package:flutter/material.dart';
 
-// class HomePage extends StatefulWidget {
-//   HomePage({Key key}) : super(key: key);
-
-//   @override
-//   _HomePageState createState() => _HomePageState();
-// }
-
-// class _HomePageState extends State<HomePage> {
-//   List<Statewise> stateData = [];
-
-//   Statewise totalCases;
-
-//   bool isConfirmSort = true;
-//   bool isActiveSort = true;
-//   bool isRecoverSort = true;
-//   bool isDeathSort = true;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     Future.delayed(Duration.zero, this.fetchData);
-//   }
-
-//   void _goToStatePage(Statewise s) {
-//     IntentUtil.switchPage(context, StatePage(totalCases: s));
-//   }
-
-//   void fetchData() {
-//     CovidController(context).getData().then((data) async {
-//       if (data != null && data.statewise.length > 0) {
-//         totalCases = data.statewise[0];
-//         data.statewise.remove(data.statewise[0]);
-//         setState(() {
-//           stateData.addAll(data.statewise);
-//         });
-//       }
-//     });
-//   }
-
-//   void _sortByConfirm() {
-//     Comparator<Statewise> c;
-//     if (isConfirmSort) {
-//       c = (a, b) => int.parse(a.confirmed).compareTo(int.parse(b.confirmed));
-//     } else {
-//       c = (b, a) => int.parse(a.confirmed).compareTo(int.parse(b.confirmed));
-//     }
-
-//     stateData.sort(c);
-//     setState(() {
-//       isConfirmSort = !isConfirmSort;
-//     });
-//   }
-
-//   void _sortByActive() {
-//     Comparator<Statewise> c;
-//     if (isActiveSort) {
-//       c = (a, b) => int.parse(a.active).compareTo(int.parse(b.active));
-//     } else {
-//       c = (b, a) => int.parse(a.active).compareTo(int.parse(b.active));
-//     }
-
-//     stateData.sort(c);
-//     setState(() {
-//       isActiveSort = !isActiveSort;
-//     });
-//   }
-
-//   void _sortByRecover() {
-//     Comparator<Statewise> c;
-//     if (isRecoverSort) {
-//       c = (a, b) => int.parse(a.recovered).compareTo(int.parse(b.recovered));
-//     } else {
-//       c = (b, a) => int.parse(a.recovered).compareTo(int.parse(b.recovered));
-//     }
-
-//     stateData.sort(c);
-//     setState(() {
-//       isRecoverSort = !isRecoverSort;
-//     });
-//   }
-
-//   void _sortByDeath() {
-//     Comparator<Statewise> c;
-//     if (isDeathSort) {
-//       c = (a, b) => int.parse(a.deaths).compareTo(int.parse(b.deaths));
-//     } else {
-//       c = (b, a) => int.parse(a.deaths).compareTo(int.parse(b.deaths));
-//     }
-
-//     stateData.sort(c);
-//     setState(() {
-//       isDeathSort = !isDeathSort;
-//     });
-//   }
-
-//   Widget getHeader() {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: <Widget>[
-//         Text(
-//           "Covid-19",
-//           style: TextStyle(fontSize: 24, fontFamily: AppStyles.FONT_BOLD),
-//         ),
-//         Icon(Icons.warning, color: Colors.white, size: 40),
-//       ],
-//     );
-//   }
-
-//   Widget getStateCard() {
-//     double height = MediaQuery.of(context).size.height;
-//     return Card(
-//       elevation: 3,
-//       color: AppColors.cardBackground,
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-//       child: Container(
-//         // constraints: BoxConstraints(maxWidth: 339.4, maxHeight: 285.6),
-//         height: height / 2.65,
-//         padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 16),
-//         child: SafeArea(
-          
-//           child: SingleChildScrollView(
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.stretch,
-//               children: <Widget>[
-//                 Expanded(
-//                   child: ListHeaderView(this._sortByConfirm, this._sortByActive,
-//                       this._sortByRecover, this._sortByDeath),
-//                 ),
-//                 if (stateData != null && stateData.length != 0)
-//                   Flexible(
-//                     child: ListView.builder(
-//                       physics: BouncingScrollPhysics(),
-//                       scrollDirection: Axis.vertical,
-//                       shrinkWrap: true,
-//                       itemCount: stateData.length,
-//                       itemBuilder: (BuildContext context, int index) {
-//                         return StateView(stateData[index], this._goToStatePage);
-//                       },
-//                     ),
-//                   )
-//                 else
-//                   Padding(
-//                     padding: EdgeInsets.only(top: 50),
-//                     child: EmptyView(
-//                       icon: Icons.data_usage,
-//                       title: 'No Data found.',
-//                       subTitle: 'Please wait, fetching data.',
-//                     ),
-//                   ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//         child: Container(
-//           padding: EdgeInsets.all(16),
-//           child: Column(
-//             children: <Widget>[
-//               getHeader(),
-//               SizedBox(height: 36),
-//               if (totalCases != null)
-//                 TotalCasesCard(totalCases)
-//               else
-//                 CircularProgressIndicator(),
-//               SizedBox(height: 26),
-//               getStateCard()
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+class HomePage extends StatelessWidget {
+  final List<String> states = [
+    'Andaman and Nicobar Islands ',
+    'Andhra Pradesh ',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chandigarh',
+    'Chattisgarh',
+    'Dadra and Nagar Haveli',
+    'Daman and Diu',
+    'Delhi',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jammu And Kashmir',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Ladakh',
+    'Lakshadweep Islands',
+    'Madhya Pradesh',
+    'Maharasthra',
+    'Manipur',
+    'Meghalya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Pondicherry',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal'
+  ];
+  final List<String> codes = [
+    'AN',
+    'AP',
+    'AR',
+    'AS',
+    'BR',
+    'CH',
+    'CT',
+    'DN',
+    'DD',
+    'DL',
+    'GA',
+    'GJ',
+    'HR',
+    'HP',
+    'JK',
+    'JH',
+    'KA',
+    'KL',
+    'LA',
+    'LD',
+    'MP',
+    'MH',
+    'MN',
+    'ML',
+    'MZ',
+    'NL',
+    'OR',
+    'PY',
+    'PB',
+    'RJ',
+    'SK',
+    'TN',
+    'TG',
+    'TR',
+    'UP',
+    'UT',
+    'WB'
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: AppDrawer(),
+      appBar: AppBar(
+        title: Text(
+          "COVID-19",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color(0xff1a1b25),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.79,
+            child: Column(
+              children: <Widget>[
+                Cases(),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemCount: states.length,
+                    itemBuilder: (ctx, i) => GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) => StateWiseDataDisplay(
+                              codes[i],
+                              states[i],
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1, color: Colors.white),
+                            gradient: RadialGradient(
+                              colors: [
+                                // Colors.grey[200],
+                                Color(0xff15161E),
+                                // Colors.black54,
+                                Color(0xff242535),
+                                // Colors.grey[300]
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Center(
+                          child: Text(
+                            states[i],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

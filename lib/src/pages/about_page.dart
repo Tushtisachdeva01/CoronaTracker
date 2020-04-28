@@ -33,19 +33,25 @@ class _AboutPageState extends State<AboutPage> {
                 getHeader(),
                 SizedBox(height: 30),
                 ListTile(
-                  leading: Text(
-                    '1.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (1).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
-                    'Wash your hands frequently',
+                    'Wash your hands frequently with hand wash',
                     textScaleFactor: 1.25,
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '2.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (2).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Maintain social distancing',
@@ -53,9 +59,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '3.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (3).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Stay home as much as possible',
@@ -63,19 +72,25 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '4.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (4).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
-                    'If you have fever, cough and difficulty breathing, seek medical care early',
+                    'If you have fever, cough and difficulty in breathing, seek medical care early',
                     textScaleFactor: 1.25,
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '5.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (5).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Consider wearing a mask in public',
@@ -83,9 +98,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '6.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (6).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Clean and disinfect household surfaces',
@@ -93,9 +111,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '7.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (7).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Cover your coughs and sneezes',
@@ -103,9 +124,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '8.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (8).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Drink water every 15 minutes',
@@ -113,9 +137,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '9.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (9).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Avoid touching eyes, nose and mouth',
@@ -123,9 +150,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '10.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (10).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Avoid contact with wild or farm animals',
@@ -133,22 +163,67 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '11.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (11).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
-                    'Thoroughly cook meat and eggs',
+                    'Try to stick to vegetarian diet',
                     textScaleFactor: 1.25,
                   ),
                 ),
                 ListTile(
-                  leading: Text(
-                    '12.',
-                    textScaleFactor: 1.25,
+                  leading: CircleAvatar(
+                    child: Text(
+                      (12).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
                   ),
                   title: Text(
                     'Eat balanced nutrition',
+                    textScaleFactor: 1.25,
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Text(
+                      (13).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
+                  ),
+                  title: Text(
+                    'Avoid eating Fast-food',
+                    textScaleFactor: 1.25,
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Text(
+                      (14).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
+                  ),
+                  title: Text(
+                    'Inculcate citrus fruits and vitamin C tablets in your diet',
+                    textScaleFactor: 1.25,
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Text(
+                      (15).toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[700],
+                  ),
+                  title: Text(
+                    'Gargle with hot water before sleeping',
                     textScaleFactor: 1.25,
                   ),
                 ),

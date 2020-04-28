@@ -1,9 +1,11 @@
 import 'package:covidtracker/res/app_colors.dart';
 import 'package:covidtracker/src/pages/about_page.dart';
+import 'package:covidtracker/src/pages/home_page.dart';
 import 'package:covidtracker/src/pages/info_page.dart';
 import 'package:covidtracker/src/pages/news_page.dart';
-import 'package:covidtracker/src/widgets/cases.dart';
+// import 'package:covidtracker/src/widgets/cases.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   MyBottomNavigation({Key key}) : super(key: key);
@@ -20,7 +22,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   Widget getWidget(int position) {
     switch (position) {
       case 0:
-        return Cases();
+        return HomePage();
       case 1:
         return InfoPage();
       case 2:
@@ -46,7 +48,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
         child: getWidget(_selectedIndex),
       ),
       bottomNavigationBar: Container(
-        height: 76,
+        height: MediaQuery.of(context).size.height * 0.1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(30), topLeft: Radius.circular(30)),
